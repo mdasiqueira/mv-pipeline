@@ -1,0 +1,154 @@
+body{
+    font-family: arial, sans-serif;
+    background: #ccc;
+    margin: 0;
+}
+
+
+.mv-header{
+    background-image: url(../imagens/banner.jpg);
+    height: 150px;
+    background-position: right center;
+    background-size: cover;
+    border-top: 1px solid transparent;
+    padding-left: 10px;
+    color:#f3ae4e;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    display:flex;
+
+}
+
+header::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+h2{
+    color: #fff;
+}
+
+.mv-pipeline-container{
+    display: flex;
+}
+
+.mv-controls{
+    width: 10%;
+    height:fit-content;
+    color: #fff;
+    background-color:#0164a9;
+    padding: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+button{
+    width: 100%; 
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+#backend-fb{
+    color: whitesmoke;
+    font-style: italic;
+}
+
+.mv-pipeline{
+    text-align: center;
+    width:30%;
+    height: auto;
+    background-color:#0164a9;
+    ;
+    border:salmon;
+    padding: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+details{
+    background-color: lightgrey;
+}
+summary{
+    background-color: #344A5F;
+    color: #f3ae4e;
+    padding: 2px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0px;
+    text-indent: 5px; 
+    text-align: left;   
+}
+summary:hover{
+    color: lawngreen;
+}
+
+.block-instruct{
+    text-align: left;
+    font-style: italic;
+    font-size: 8pt;
+    padding-left: 20px;
+    margin: auto;
+}
+
+table{
+    width: 100%;
+}
+
+.tg-param{
+    text-align: right;
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    width: 70%;
+}
+
+
+.tg-val{
+    /* float:left; */
+    text-align: left;
+    color: lawngreen;
+    width: 50%;
+}
+
+/* input[type="number"]{
+    width: 90%;
+} */
+input[type="text"], input[type="number"]{
+    width: 90%;
+}
+
+input:hover{
+    background-color:#0164a9;
+    color: honeydew;
+}
+
+#id_code_block{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(102, 102, 102);
+    color: linen;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    resize: both;
+}
+
+.mv-images{
+    flex-grow: 1;
+    height:fit-content;
+    text-align: center;
+    background-color:#0164a9;
+    border:salmon;
+    padding-top: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.mv-media-feed{
+    width: 90%;
+    padding-bottom: 30px;
+}
+

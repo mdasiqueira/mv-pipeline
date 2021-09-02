@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MV Pipeline</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/css/mvstyles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mvstyles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="{{ url_for('static', filename='send_pipeline_config.js') }}"></script>
+    <script src="../static/send_pipeline_config.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body onload="sendPipelineParameters();">
+    
+
+    <header class="mv-header">
+      <h1>SmartCam: Pipeline</h1>
+    </header>
+
+    <div class="mv-pipeline-container">
+      
+      
+
+      
+      <!-- COLUNA LEFT -->
+      <div class="mv-controls">
+        
+        <h2>Controle de Estado</h2>
+
+        <!-- <div> -->
+
+        <button class="btn btn-light"
+          onclick="sendPipelineParameters();">
+          Atualizar Pipeline
+        </button>
+        
+        
+        
+        
+        <button class="btn btn-light"
+        style="width: 100%; height: 50px"
+        onClick="reloadPage();">
+        Recarregar Pipeline
+        </button>
+        
+        
+        <br>
+        <hr>
+        <br>
+          <h4>Retorno Back-End: </h4>
+          <p id="backend-fb">Aguardando envio de parâmetros...</p>
+
+      </div>
+
+      <!-- COLUNA CENTER -->
+
+      <div class="mv-pipeline">
+      
+        <h2>MV Image Proccessing Pipeline</h2>
+
+        <details open=true>
+          <summary>camera</summary>
+          <table class="tg" id="bloco_camera">
+            <tr> 	<td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_cam_en" checked></td></tr>
+            <tr> 	<td title="Canal da Câmera no componente DirectX" class="tg-param">Canal da Câmera:</td>
+              <td class="tg-val"><input type="number" name="cam_channel" id="id_cam_channel" value=0></td></tr>
+            <tr> 	<td title="Exposure Time (us)" class="tg-param">Exposure Time (us):</td>
+                <td class="tg-val"><input type="number" name="cam_exposure" id="id_cam_exposure" value="1200"></td></tr>
+          </table>
+        </details>
+
+        <details open=true>
+          <summary>crop</summary>
+          <table class="tg">
+            <tr> 	<td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_crop_en" unchecked></td></tr>            
+            <tr><td title="Origem da área retangular para corte: x" class="tg-param">X:</td>
+                <td class="tg-val"><input type="number" id="id_crop_x" value="0" min=0></td></tr>
+            <tr><td title="Origem da área retangular para corte: y" class="tg-param">Y:</td>
+                <td class="tg-val"><input type="number" id="id_crop_y" value="0" min=0></td></tr>
+            <tr><td title="Largura da área retangular para corte" class="tg-param">dX:</td>
+                <td class="tg-val"><input type="number" id="id_crop_dx" value="640" min=0></td></tr>
+            <tr><td title="Altura da área retangular para corte" class="tg-param">dY:</td>
+                <td class="tg-val"><input type="number" id="id_crop_dy" value="200" min=0></td></tr>
+          </table>
+        </details>
+
+        <details open=true>
+          <summary>background_substract</summary>
+          <table class="tg">
+            <tr> 	<td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_sub_en" unchecked></td></tr>            
+          </table>
+        </details>
+
+        <details open=true>
+          <summary>binarize</summary>
+          <table class="tg">
+            <tr> 	<td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_binarize_en" unchecked></td></tr>
+            <tr><td title="Peso do canal R: x (0.0~1.0)" class="tg-param">r:</td>
+              <td class="tg-val"><input type="number" id="id_binarize_r" value="0.33" min="0" max="1" step="0.01"></td></tr>
+            <tr><td title="Peso do canal G: x (0.0~1.0)" class="tg-param">g:</td>
+              <td class="tg-val"><input type="number" id="id_binarize_g" value="0.33" min="0" max="1" step="0.01"></td></tr>
+            <tr><td title="Peso do canal B: x (0.0~1.0)" class="tg-param">b:</td>
+              <td class="tg-val"><input type="number" id="id_binarize_b" value="0.33" min="0" max="1" step="0.01"></td></tr>
+            <tr><td title="Threshold global: x (0~255)" class="tg-param">k:</td>
+              <td class="tg-val"><input type="number" id="id_binarize_k" value="128" min="0" max="255" step="1"></td></tr>
+          </table>
+        </details>
+
+        <details open=true>
+          <summary>lambda</summary>
+          <table class="tg">
+
+              <tr>  <td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_lambda_en" unchecked></td>
+              </tr>
+
+          </table>
+          <div class="block-instruct"><p>Trecho de código Python no escopo atual.</p></div>
+          <textarea name="" id="id_code_block" " rows="10" placeholder="Insira aqui o seu código...">frame = faceDetector.detectFaces(img=frame)</textarea>
+        </details>
+
+
+        <details open=true>
+          <summary>stream</summary>
+          <table class="tg">
+            <tr> 	<td title="Enable/Disable do bloco" class="tg-param">Bloco Habilitado:</td>
+              <td class="tg-val"><input class="block_enabled" type="checkbox" id="id_stream_en" checked></td></tr>
+          </table>
+        </details>
+
+      </div>
+      
+      <!-- COLUNA RIGHT -->
+
+      <div class="mv-images">
+        <h2>Saída de Imagem</h2>
+        <img class="mv-media-feed" src="{{ url_for('video_feed') }}">
+      </div>
+
+    </div>
+
+  
+
+  </body>
+</html>
